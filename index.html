@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nostalgia Lagos | Bar, Lounge and Rooftop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F7EFE3;--ink:#1B1028;--mut:#6A5A74;--ln:rgba(27,16,40,.15);--cd:#fff;--amb:#A85A10;--rose:#B52B63;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E0A1C;--ink:#F6E9D7;--mut:#A798B5;--ln:rgba(246,233,215,.16);--cd:#181029;--amb:#FFB45E;--rose:#FF5D8F}}
+:root[data-theme="dark"]{--bg:#0E0A1C;--ink:#F6E9D7;--mut:#A798B5;--ln:rgba(246,233,215,.16);--cd:#181029;--amb:#FFB45E;--rose:#FF5D8F}
+html{scroll-behavior:smooth;scroll-padding-top:5rem}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.05rem/1.65 Jost,system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:hidden}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;letter-spacing:-.01em;line-height:1;margin:0}
+h2{font-size:clamp(2.6rem,8vw,5rem)}h3{font-size:1.7rem}
+em{font-style:italic}a{color:inherit}p{margin:0}
+:focus-visible{outline:3px solid var(--amb);outline-offset:3px}
+.note{background:#FFB45E;color:#1B1028;font-size:.82rem;font-weight:500;text-align:center;padding:.5rem 1rem}
+.pad{padding-left:clamp(1.25rem,5vw,4rem);padding-right:clamp(1.25rem,5vw,4rem)}
+.w{max-width:70rem;margin:0 auto}
+section{padding-top:clamp(4rem,10vw,7.5rem)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:30;display:flex;align-items:center;justify-content:space-between;padding:calc(.8rem + env(safe-area-inset-top,0px)) clamp(1.25rem,5vw,4rem) .8rem;background:rgba(14,10,28,.45);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:#F6E9D7;border-bottom:1px solid rgba(246,233,215,.12)}
+.brand{font:italic 600 1.7rem "Cormorant Garamond",serif;text-decoration:none}
+.nav nav{display:flex;gap:1.6rem;font-weight:500;font-size:.92rem;letter-spacing:.04em}
+.nav nav a{text-decoration:none;opacity:.85}.nav nav a:hover{opacity:1}
+@media (max-width:760px){.nav nav{display:none}}
+.btn{display:inline-block;background:#FFB45E;color:#1B1028;font:500 .95rem Jost,sans-serif;letter-spacing:.04em;text-decoration:none;padding:.75rem 1.5rem;border-radius:999px;border:0;cursor:pointer;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px);background:#FFC47E}
+.btn.o{background:transparent;color:inherit;border:1px solid currentColor}
+.hero{position:relative;overflow:hidden;min-height:100svh;color:#F6E9D7;background:linear-gradient(180deg,#140A2E 0%,#3B1654 35%,#B53A78 68%,#FF9F5A 100%);padding-top:clamp(7rem,22vh,12rem)}
+.star{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;animation:tw 3s ease-in-out infinite}
+@keyframes tw{50%{opacity:.15}}
+.sun{position:absolute;left:50%;bottom:12%;width:min(75vw,540px);aspect-ratio:1;margin-left:calc(min(75vw,540px)/-2);border-radius:50%;background:radial-gradient(circle,#FFE9B0 0%,#FFC36A 50%,rgba(255,195,106,0) 72%);animation:rise 2.4s ease-out both}
+@keyframes rise{from{transform:translateY(40%);opacity:.2}to{transform:none;opacity:1}}
+.sk{position:absolute;left:0;bottom:0;width:100%;display:block}
+.sk path{vertical-align:bottom}
+.s1{height:34%;fill:#3A1A55}.s2{height:26%;fill:#220F3B}.s3{height:18%;fill:#0E0A1C}
+.hc{position:relative;z-index:3}
+.hc .tag{font-size:.82rem;letter-spacing:.22em;text-transform:uppercase;opacity:.9}
+.hc h1{font-size:clamp(4.6rem,20vw,13rem);font-style:italic;margin:.4rem 0 1.2rem;text-shadow:0 4px 40px rgba(20,10,46,.5)}
+.hc p{max-width:26rem;font-size:1.15rem;margin-bottom:1.8rem}
+.row{display:flex;flex-wrap:wrap;gap:.7rem}
+.two{display:grid;gap:3rem;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));align-items:center}
+.lead{color:var(--mut);margin-top:1.4rem;max-width:30rem;font-size:1.12rem}
+.facts div{display:flex;justify-content:space-between;gap:1rem;padding:1.1rem 0;border-top:1px solid var(--ln)}
+.facts div:last-child{border-bottom:1px solid var(--ln)}
+.facts b{font:500 1.6rem "Cormorant Garamond",serif}.facts span{color:var(--mut);text-align:right}
+.tabs{display:flex;gap:.5rem;margin:2rem 0 1.5rem;flex-wrap:wrap}
+.tabs button{font:500 .95rem Jost,sans-serif;letter-spacing:.04em;padding:.6rem 1.3rem;border-radius:999px;border:1px solid var(--ln);background:transparent;color:var(--ink);cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.ml{display:grid;gap:0 3rem;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr))}
+.ml div{padding:1.1rem 0;border-top:1px solid var(--ln)}
+.ml b{display:block;font:500 1.55rem "Cormorant Garamond",serif}.ml span{color:var(--mut);font-size:.95rem}
+[hidden]{display:none!important}
+.smp{color:var(--mut);font-size:.85rem;margin-top:1.4rem}
+.roof{position:relative;overflow:hidden;margin-top:clamp(4rem,10vw,7.5rem);padding-bottom:clamp(8rem,20vw,14rem);background:linear-gradient(180deg,#0E0A1C,#2A1244 70%,#4A1C5E);color:#F6E9D7}
+.roof .w{position:relative;z-index:2;padding-top:clamp(4rem,10vw,7rem)}
+.roof .lead{color:#CDBBDD}
+.rf{display:grid;gap:2rem;margin-top:2.5rem;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr))}
+.rf h3{color:#FFB45E}.rf p{color:#CDBBDD;margin-top:.4rem;font-size:.98rem}
+.roof .sk{height:30%;fill:#0E0A1C}
+.gal{display:grid;gap:.8rem;margin-top:2.5rem;grid-template-columns:repeat(auto-fit,minmax(10rem,1fr));grid-auto-rows:9rem}
+.gal div{border-radius:18px;padding:1rem;display:flex;align-items:flex-end;color:#F6E9D7;font-weight:500;font-size:.92rem}
+.g1{grid-row:span 2;grid-column:span 2;background:linear-gradient(160deg,#3B1654,#FF7A59)}.g2{background:linear-gradient(200deg,#220F3B,#B53A78)}.g3{background:linear-gradient(120deg,#0E0A1C,#8A5A1A)}
+.g4{grid-column:span 2;background:linear-gradient(90deg,#B53A78,#FFB45E)}.g5{background:linear-gradient(140deg,#140A2E,#5B2A7A)}.g6{background:linear-gradient(220deg,#FF9F5A,#3B1654)}
+.ev a{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.5rem 0;border-top:1px solid var(--ln);text-decoration:none;transition:padding .25s}
+.ev a:last-child{border-bottom:1px solid var(--ln)}.ev a:hover{padding-left:1rem}
+.ev h3{font-size:clamp(1.8rem,5vw,3rem)}.ev p{color:var(--mut);max-width:20rem;text-align:right;font-size:.95rem}
+@media (max-width:620px){.ev a{flex-direction:column;align-items:flex-start}.ev p{text-align:left}}
+.qs{display:grid;gap:1.5rem;margin-top:2.5rem;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr))}
+.qs blockquote{margin:0;padding:1.8rem;background:var(--cd);border:1px solid var(--ln);border-radius:22px}
+.qs blockquote:nth-child(2){margin-top:1.5rem}
+.qs q{display:block;font:italic 500 1.6rem/1.2 "Cormorant Garamond",serif;quotes:none}
+.qs cite{display:block;margin-top:1.2rem;font-style:normal;color:var(--mut);font-size:.9rem}
+.res{display:grid;gap:3rem;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));align-items:start}
+.info p{color:var(--mut);margin-top:1rem}.info b{color:var(--ink);font-weight:500}
+form{background:var(--cd);border:1px solid var(--ln);border-radius:26px;padding:1.6rem}
+label{display:block;font-weight:500;margin:1rem 0 .3rem;font-size:.9rem}label:first-child{margin-top:0}
+input,select,textarea{width:100%;font:inherit;font-size:1rem;color:var(--ink);background:transparent;border:1px solid var(--ln);border-radius:12px;padding:.75rem .9rem}
+option{color:#1B1028}
+.fg{display:grid;gap:0 1rem;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr))}
+form .btn{width:100%;margin-top:1.4rem;background:var(--ink);color:var(--bg)}
+#sent{margin-top:1rem;padding:1rem;border-radius:12px;border:1px solid var(--ln);background:var(--cd)}
+footer{margin-top:clamp(4rem,10vw,7rem);background:#0E0A1C;color:#F6E9D7;padding-top:3rem;padding-bottom:2rem}
+.wm{font:italic 500 clamp(3.6rem,17vw,12rem)/.9 "Cormorant Garamond",serif;color:transparent;-webkit-text-stroke:1px rgba(246,233,215,.35)}
+.fr{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:1.8rem;font-size:.9rem;color:#A798B5}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.star,.sun{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="note">Concept design for Nostalgia Lagos. Menu items, reviews, and details are samples to be confirmed with the owner.</div>
+<header class="nav"><a class="brand" href="#top">Nostalgia</a><nav aria-label="Main"><a href="#about">About</a><a href="#menu">Menu</a><a href="#rooftop">Rooftop</a><a href="#gallery">Gallery</a><a href="#nights">Nights</a></nav><a class="btn" href="#reserve">Reserve</a></header>
+
+<main id="top">
+<div class="hero pad" id="hero">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <path id="p1" d="M0 120V80h40V55h30V90h36V45h28V85h40V65h34V35h30V80h44V60h36V95h40V50h30V75h44V40h28V88h40V62h34V84h38V54h30V92h38V70h36V120z"/>
+    <path id="p2" d="M0 120V90h50V60h34V85h40V50h26V80h44V70h38V40h32V78h46V58h30V92h40V64h34V86h36V52h28V80h44V66h40V72h60V58h54V120z"/>
+    <path id="p3" d="M0 120V100h60V84h40V104h50V90h46V102h56V80h36V98h50V86h44V104h52V92h48V100h40V84h54V96h50V90h50V120z"/></defs></svg>
+  <div class="sun" aria-hidden="true"></div>
+  <svg class="sk s1" viewBox="0 0 676 120" preserveAspectRatio="none" aria-hidden="true"><use href="#p1"/></svg>
+  <svg class="sk s2" viewBox="0 0 676 120" preserveAspectRatio="none" aria-hidden="true"><use href="#p2"/></svg>
+  <svg class="sk s3" viewBox="0 0 676 120" preserveAspectRatio="none" aria-hidden="true"><use href="#p3"/></svg>
+  <div class="hc w">
+    <span class="tag">Bar &middot; Lounge &middot; Rooftop</span>
+    <h1>Nostalgia</h1>
+    <p>Cocktails, good plates, and the Lagos skyline at golden hour. Lekki Phase 1.</p>
+    <div class="row"><a class="btn" href="#reserve">Reserve a table</a><a class="btn o" href="#menu">See the menu</a></div>
+  </div>
+</div>
+
+<section id="about" class="pad"><div class="w two">
+  <div class="rv"><h2>Golden hour, <em>all night.</em></h2><p class="lead">Nostalgia mixes old-world polish with the energy of Lagos nights. Come for a drink, stay for dinner, or take the stairs up for a long evening above the city.</p></div>
+  <div class="facts rv">
+    <div><b>Rooftop</b><span>Skyline views after sunset</span></div>
+    <div><b>Cocktails</b><span>Made at the bar</span></div>
+    <div><b>Plates</b><span>A continental kitchen</span></div>
+    <div><b>Platters</b><span>Made for sharing</span></div>
+  </div>
+</div></section>
+
+<section id="menu" class="pad"><div class="w">
+  <h2 class="rv">On the <em>menu</em></h2>
+  <div class="tabs rv" role="tablist" aria-label="Menu"><button role="tab" aria-selected="true" data-t="a">Cocktails</button><button role="tab" aria-selected="false" data-t="b">Plates</button><button role="tab" aria-selected="false" data-t="c">Platters</button></div>
+  <div class="ml rv" data-p="a" role="tabpanel"><div><b>Old Fashioned</b><span>Whiskey, bitters, orange peel</span></div><div><b>Espresso Martini</b><span>Vodka, coffee liqueur, fresh espresso</span></div><div><b>Passion Fruit Spritz</b><span>Sparkling wine, passion fruit, mint</span></div><div><b>Zero-proof Garden</b><span>Cucumber, lime, mint, soda</span></div></div>
+  <div class="ml" data-p="b" role="tabpanel" hidden><div><b>Grilled sea bass</b><span>Lemon butter, seasonal vegetables</span></div><div><b>Lamb kofta</b><span>Hummus, flatbread, pickled onions</span></div><div><b>Creamy mushroom pasta</b><span>Parmesan, herbs, garlic bread</span></div><div><b>Suya-spiced chicken skewers</b><span>Onions, tomato, yaji</span></div></div>
+  <div class="ml" data-p="c" role="tabpanel" hidden><div><b>Mixed grill platter</b><span>Beef, chicken, and sausage with dips</span></div><div><b>Seafood sharing board</b><span>Prawns, calamari, and sauces</span></div><div><b>Cheese and charcuterie</b><span>Cured meats, cheeses, fruit</span></div><div><b>Small chops platter</b><span>A mix of party favourites</span></div></div>
+  <p class="smp">Sample menu. Items and prices to be confirmed with the owner.</p>
+</div></section>
+
+<div class="roof" id="rooftop">
+  <div class="w pad">
+    <h2 class="rv">Drinks above <em>the city</em></h2>
+    <p class="lead rv">When the sun goes down, the rooftop comes alive. Lights, music, and a skyline that does half the work.</p>
+    <div class="rf rv"><div><h3>Skyline views</h3><p>Open-air seating with a view across Lagos.</p></div><div><h3>Music and lighting</h3><p>An evening mood set for conversation.</p></div><div><h3>Private tables</h3><p>Reserve a section for your group.</p></div></div>
+  </div>
+  <svg class="sk" viewBox="0 0 676 120" preserveAspectRatio="none" aria-hidden="true"><use href="#p2"/></svg>
+</div>
+
+<section id="gallery" class="pad"><div class="w">
+  <h2 class="rv">The <em>feeling</em></h2>
+  <div class="gal rv"><div class="g1">Rooftop at dusk</div><div class="g2">The bar</div><div class="g3">Signature cocktails</div><div class="g4">Evening lights</div><div class="g5">Dining room</div><div class="g6">Private tables</div></div>
+  <p class="smp">Photos to be added.</p>
+</div></section>
+
+<section id="nights" class="pad"><div class="w">
+  <h2 class="rv">Nights at <em>Nostalgia</em></h2>
+  <div class="ev rv" style="margin-top:2.5rem">
+    <a href="#reserve"><h3>Rooftop evenings</h3><p>Drinks, music, and the skyline.</p></a>
+    <a href="#reserve"><h3>Celebrations</h3><p>Birthdays and milestones, with a table set for your group.</p></a>
+    <a href="#reserve"><h3>Private bookings</h3><p>Hosting a larger group? Tell us the date and numbers.</p></a>
+  </div>
+</div></section>
+
+<section class="pad"><div class="w">
+  <h2 class="rv">Good <em>company</em></h2>
+  <div class="qs">
+    <blockquote class="rv"><q>The rooftop at sunset is something else. Great drinks and a relaxed crowd.</q><cite>Aisha, Lekki</cite></blockquote>
+    <blockquote class="rv"><q>We booked for a birthday and the team handled everything.</q><cite>Tobi, Ikoyi</cite></blockquote>
+    <blockquote class="rv"><q>Good food, good music, and the view makes the whole night.</q><cite>Dami, Victoria Island</cite></blockquote>
+  </div>
+  <p class="smp">Sample reviews for this concept design.</p>
+</div></section>
+
+<section id="reserve" class="pad"><div class="w res">
+  <div class="info rv"><h2>Save your <em>table</em></h2><p>Tell us when you are coming and we will confirm.</p><p><b>Find us</b><br>88 Hakeem Dickson Road, Lekki Phase 1, Lagos</p><p><b>Instagram</b><br><a href="https://www.instagram.com/nostalgia.lagos" target="_blank" rel="noopener">@nostalgia.lagos</a></p></div>
+  <div class="rv">
+    <form id="rf" name="booking" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field"><input type="hidden" name="form-name" value="booking"><p style="display:none"><label>Leave this empty <input name="bot-field"></label></p>
+      <label for="n">Name</label><input id="n" name="name" required autocomplete="name">
+      <label for="p">Phone number</label><input id="p" name="phone" type="tel" required autocomplete="tel">
+      <div class="fg"><div><label for="d">Date</label><input id="d" name="date" type="date" required></div><div><label for="t">Time</label><select id="t" name="time"><option>6:00 pm</option><option>7:00 pm</option><option>8:00 pm</option><option>9:00 pm</option></select></div><div><label for="g">Guests</label><input id="g" name="guests" type="number" min="1" max="30" value="2"></div></div>
+      <label for="m">Occasion or notes</label><textarea id="m" name="notes" rows="3"></textarea>
+      <button class="btn" type="submit">Request a table</button>
+    </form>
+    <p id="sent" role="status" hidden>Request received. This is a demo, so nothing was sent. On the live site it would reach the team by WhatsApp or email.</p>
+  </div>
+</div></section>
+</main>
+
+<footer class="pad"><div class="w"><div class="wm" aria-hidden="true">Nostalgia</div><div class="fr"><span>88 Hakeem Dickson Road, Lekki Phase 1, Lagos</span><span><a href="https://www.instagram.com/nostalgia.lagos" target="_blank" rel="noopener">@nostalgia.lagos</a></span><span>Concept design. Not the official website.</span></div></div></footer>
+
+<script>
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var hero=document.getElementById('hero');
+if(!reduce){for(var i=0;i<46;i++){var s=document.createElement('i');s.className='star';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*46+'%';s.style.animationDelay=(Math.random()*3)+'s';s.style.opacity=.4+Math.random()*.6;hero.insertBefore(s,hero.firstChild)}}
+var layers=[['.sun',.28],['.s1',.1],['.s2',.05]].map(function(a){return[hero.querySelector(a[0]),a[1]]}),tick=false;
+if(!reduce){addEventListener('scroll',function(){if(tick)return;tick=true;requestAnimationFrame(function(){var y=Math.min(scrollY,innerHeight);layers.forEach(function(l){l[0].style.translate='0 '+(y*l[1])+'px'});tick=false})},{passive:true})}
+document.querySelector('.tabs').addEventListener('click',function(e){
+  var b=e.target.closest('button');if(!b)return;
+  [].forEach.call(this.children,function(x){x.setAttribute('aria-selected',x===b?'true':'false')});
+  [].forEach.call(document.querySelectorAll('[data-p]'),function(p){p.hidden=p.dataset.p!==b.dataset.t;if(!p.hidden)p.classList.add('in')});
+});
+var els=[].slice.call(document.querySelectorAll('.rv'));
+if(reduce||!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')})}
+else{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});els.forEach(function(e){io.observe(e)})}
+document.getElementById('rf').addEventListener('submit',function(e){
+  e.preventDefault();var f=this,s=document.getElementById('sent'),b=f.querySelector('button');b.disabled=true;
+  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()})
+  .then(function(r){if(!r.ok)throw 0;s.textContent='Thank you. Your request has been sent and we will confirm your table shortly.';f.reset()})
+  .catch(function(){s.textContent='Sorry, that did not send. Please try again, or message us on Instagram @nostalgia.lagos.'})
+  .then(function(){s.hidden=false;b.disabled=false});
+});
+</script>
+</body>
+</html>
