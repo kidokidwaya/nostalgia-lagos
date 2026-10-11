@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Nostalgia Lagos | Bookings dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0E0A1C;--cd:#181029;--ink:#F6E9D7;--mut:#A798B5;--ln:rgba(246,233,215,.14);--amb:#FFB45E;--grn:#4ADE9A;--red:#FF6B7A;--gry:#8C849A;--on:#1B1028;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#F7EFE3;--cd:#fff;--ink:#1B1028;--mut:#6A5A74;--ln:rgba(27,16,40,.15);--amb:#B8691A;--grn:#12864F;--red:#C42A44;--gry:#6F6779;--on:#fff}}
+:root[data-theme="light"]{--bg:#F7EFE3;--cd:#fff;--ink:#1B1028;--mut:#6A5A74;--ln:rgba(27,16,40,.15);--amb:#B8691A;--grn:#12864F;--red:#C42A44;--gry:#6F6779;--on:#fff}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.5 Jost,system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;margin:0;line-height:1}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--amb);outline-offset:2px}
+.pad{padding-left:clamp(1rem,4vw,3rem);padding-right:clamp(1rem,4vw,3rem)}
+.lw{min-height:100svh;display:grid;place-items:center;padding:1.5rem}
+.lc{width:min(100%,26rem);background:var(--cd);border:1px solid var(--ln);border-radius:28px;padding:2rem}
+.lc h1{font-size:2.6rem;font-style:italic}.lc p{color:var(--mut);margin:.6rem 0 1.4rem}
+label{display:block;font-weight:500;font-size:.88rem;margin-bottom:.3rem}
+input[type=password],input[type=text],input[type=search],select{width:100%;background:transparent;border:1px solid var(--ln);border-radius:12px;padding:.7rem .9rem;font-size:1rem}
+option{color:#1B1028}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;background:var(--amb);color:#1B1028;font-weight:500;border:0;border-radius:999px;padding:.7rem 1.3rem;cursor:pointer;text-decoration:none;font-size:.95rem}
+.btn.o{background:transparent;color:var(--ink);border:1px solid var(--ln)}
+.btn.sm{padding:.45rem .9rem;font-size:.85rem}
+.lc .btn{width:100%;margin-top:1rem}
+.err{color:var(--red);font-size:.9rem;margin-top:.8rem;min-height:1.2rem}
+.demo{display:block;width:100%;margin-top:.6rem}
+.hd{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;padding-top:1.4rem;padding-bottom:1rem}
+.hd h1{font-size:2.4rem;font-style:italic}.hd small{display:block;color:var(--mut);margin-top:.3rem}
+.act{display:flex;gap:.5rem}
+.banner{background:var(--amb);color:#1B1028;text-align:center;font-weight:500;font-size:.9rem;padding:.5rem 1rem}
+.stats{display:grid;gap:.7rem;grid-template-columns:repeat(auto-fit,minmax(8.5rem,1fr));margin-bottom:1.2rem}
+.stat{background:var(--cd);border:1px solid var(--ln);border-radius:20px;padding:1rem 1.1rem}
+.stat b{display:block;font:600 2.4rem/1 "Cormorant Garamond",serif}.stat span{color:var(--mut);font-size:.85rem}
+.stat.hot b{color:var(--amb)}
+.tools{display:grid;gap:.8rem;margin-bottom:1.2rem}
+.chips{display:flex;gap:.4rem;flex-wrap:wrap}
+.chip{border:1px solid var(--ln);background:transparent;border-radius:999px;padding:.4rem .9rem;font-size:.88rem;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fill,minmax(19rem,1fr));padding-bottom:3rem}
+.c{background:var(--cd);border:1px solid var(--ln);border-left:5px solid var(--gry);border-radius:20px;padding:1.1rem 1.2rem}
+.c.s-New{border-left-color:var(--amb)}.c.s-Confirmed{border-left-color:var(--grn)}.c.s-Cancelled{border-left-color:var(--red);opacity:.75}
+.top{display:flex;justify-content:space-between;gap:.8rem;align-items:flex-start}
+.top h3{font-size:1.7rem}.meta{color:var(--mut);margin-top:.2rem}
+.g{background:var(--bg);border:1px solid var(--ln);border-radius:999px;padding:.2rem .7rem;font-size:.85rem;white-space:nowrap}
+.nt{margin:.8rem 0 0;color:var(--mut);font-size:.95rem}
+.row{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.9rem}
+.ctl{display:grid;grid-template-columns:1fr;gap:.6rem;margin-top:.9rem}
+.ctl input[type=text]{padding:.55rem .8rem;font-size:.92rem}
+.rc{display:block;margin-top:.7rem;color:var(--mut);font-size:.8rem}
+.empty{grid-column:1/-1;text-align:center;color:var(--mut);padding:3rem 1rem}
+.toast{position:fixed;left:50%;bottom:calc(1.2rem + env(safe-area-inset-bottom,0px));translate:-50% 0;background:var(--ink);color:var(--bg);padding:.7rem 1.2rem;border-radius:999px;font-size:.92rem;z-index:50}
+</style>
+</head>
+<body>
+<div class="lw" id="login">
+  <div class="lc">
+    <h1>Nostalgia</h1>
+    <p>Bookings dashboard. Enter the password to see your table requests.</p>
+    <form id="lf"><label for="pw">Password</label><input id="pw" type="password" autocomplete="current-password" required>
+    <button class="btn" type="submit">Sign in</button></form>
+    <button class="btn o demo" id="demob" type="button" hidden>View demo dashboard</button>
+    <p class="err" id="err" role="alert"></p>
+  </div>
+</div>
+
+<div id="app" hidden>
+  <div class="banner" id="dbanner" hidden>Demo data. Changes here are not saved.</div>
+  <header class="hd pad"><div><h1>Bookings</h1><small>Nostalgia Lagos</small></div><div class="act"><button class="btn o sm" id="rfb" type="button">Refresh</button><button class="btn o sm" id="lo" type="button">Log out</button></div></header>
+  <main class="pad">
+    <div class="stats" id="stats"></div>
+    <div class="tools">
+      <input type="search" id="q" placeholder="Search by name or phone" aria-label="Search bookings">
+      <div class="chips" id="rng" role="group" aria-label="Date"><button class="chip" data-v="up" aria-pressed="true">Upcoming</button><button class="chip" data-v="today" aria-pressed="false">Today</button><button class="chip" data-v="past" aria-pressed="false">Past</button><button class="chip" data-v="all" aria-pressed="false">All</button></div>
+      <div class="chips" id="sts" role="group" aria-label="Status"><button class="chip" data-v="" aria-pressed="true">Any status</button><button class="chip" data-v="New" aria-pressed="false">New</button><button class="chip" data-v="Confirmed" aria-pressed="false">Confirmed</button><button class="chip" data-v="Completed" aria-pressed="false">Completed</button><button class="chip" data-v="Cancelled" aria-pressed="false">Cancelled</button></div>
+    </div>
+    <div class="grid" id="list"></div>
+  </main>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+/* ===== SETTINGS ===== */
+var API='https://script.google.com/macros/s/AKfycbyc1nAiQ1fauSg_tBkXXo0cr0M_LaHKmOC2hKSw6iXcfFGFVzsrnX8vl3tE5JmysJBL/exec';   /* Paste your Google Apps Script web app URL here, between the quotes. */
+/* ==================== */
+var STATUSES=['New','Confirmed','Completed','Cancelled'];
+var rows=[],pw='',demo=false,range='up',status='',query='',timer,lastNew=-1;
+var $=function(id){return document.getElementById(id)};
+function store(k,v){try{if(v===undefined)return sessionStorage.getItem(k);if(v===null)sessionStorage.removeItem(k);else sessionStorage.setItem(k,v)}catch(e){}return null}
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+function pad2(n){return (n<10?'0':'')+n}
+function ymd(d){return d.getFullYear()+'-'+pad2(d.getMonth()+1)+'-'+pad2(d.getDate())}
+function today(){return ymd(new Date())}
+function toast(m){var t=$('toast');t.textContent=m;t.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(function(){t.hidden=true},2800)}
+function fmtDate(s){var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(s||'');if(!m)return s||'No date';var d=new Date(+m[1],+m[2]-1,+m[3]);return d.toLocaleDateString(undefined,{weekday:'short',day:'numeric',month:'short'})}
+function fmtTime(s){var m=/^(\d{1,2}):(\d{2})/.exec(s||'');if(!m)return s||'';var h=+m[1],ap=h>=12?'pm':'am';h=h%12||12;return h+':'+m[2]+' '+ap}
+function waNum(p){var n=String(p||'').replace(/[^0-9]/g,'');if(n.indexOf('0')===0)n='234'+n.slice(1);return n}
+function api(body){
+  return fetch(API,{method:'POST',body:JSON.stringify(body)}).then(function(r){return r.json()}).then(function(j){if(!j.ok)throw new Error(j.error||'Error');return j});
+}
+function demoRows(){
+  var n=new Date(),mk=function(o){var d=new Date(n.getFullYear(),n.getMonth(),n.getDate()+o);return ymd(d)};
+  return [
+    {id:'d1',created:new Date().toISOString(),name:'Aisha B.',phone:'08031112233',date:mk(0),time:'20:00',guests:'4',notes:'Birthday. Rooftop table if possible.',status:'New',note:''},
+    {id:'d2',created:new Date().toISOString(),name:'Tobi A.',phone:'08055566778',date:mk(0),time:'19:00',guests:'2',notes:'',status:'Confirmed',note:'Window side'},
+    {id:'d3',created:new Date().toISOString(),name:'Dami K.',phone:'07061234567',date:mk(1),time:'21:00',guests:'8',notes:'Work team dinner.',status:'New',note:''},
+    {id:'d4',created:new Date().toISOString(),name:'Chika O.',phone:'08098765432',date:mk(2),time:'18:00',guests:'3',notes:'One guest is vegetarian.',status:'Confirmed',note:''},
+    {id:'d5',created:new Date().toISOString(),name:'Seun L.',phone:'08123456789',date:mk(4),time:'20:00',guests:'6',notes:'Anniversary.',status:'New',note:''},
+    {id:'d6',created:new Date().toISOString(),name:'Funmi R.',phone:'09011223344',date:mk(-1),time:'19:00',guests:'2',notes:'',status:'Completed',note:''},
+    {id:'d7',created:new Date().toISOString(),name:'Emeka N.',phone:'08077889900',date:mk(-2),time:'20:00',guests:'5',notes:'',status:'Cancelled',note:'Called to cancel'},
+    {id:'d8',created:new Date().toISOString(),name:'Ngozi P.',phone:'08144556677',date:mk(6),time:'19:00',guests:'10',notes:'Surprise birthday. Please keep it quiet.',status:'New',note:''}
+  ];
+}
+function load(quiet){
+  var p=demo?Promise.resolve({rows:demoRows()}):api({action:'list',pw:pw});
+  return p.then(function(j){
+    if(demo&&rows.length&&quiet){render();return}
+    rows=j.rows;
+    var nw=rows.filter(function(r){return r.status==='New'}).length;
+    if(quiet&&lastNew>=0&&nw>lastNew)toast('New booking received');
+    lastNew=nw;render();
+  });
+}
+function render(){
+  var t=today(),live=rows.filter(function(r){return r.status!=='Cancelled'});
+  var td=live.filter(function(r){return r.date===t}),up=live.filter(function(r){return r.date>=t});
+  var gt=td.reduce(function(a,r){return a+(parseInt(r.guests,10)||0)},0);
+  $('stats').innerHTML=[['New requests',rows.filter(function(r){return r.status==='New'}).length,1],['Today',td.length],['Guests today',gt],['Upcoming',up.length],['All time',rows.length]].map(function(s){return '<div class="stat'+(s[2]&&s[1]?' hot':'')+'"><b>'+s[1]+'</b><span>'+s[0]+'</span></div>'}).join('');
+  var q=query.toLowerCase();
+  var list=rows.filter(function(r){
+    if(status&&r.status!==status)return false;
+    if(range==='up'&&!(r.date>=t))return false;
+    if(range==='today'&&r.date!==t)return false;
+    if(range==='past'&&!(r.date<t))return false;
+    if(q&&(r.name+' '+r.phone).toLowerCase().indexOf(q)<0)return false;
+    return true;
+  });
+  list.sort(function(a,b){
+    if(range==='up'||range==='today')return (a.date+a.time).localeCompare(b.date+b.time);
+    return (b.created||'').localeCompare(a.created||'');
+  });
+  $('list').innerHTML=list.length?list.map(card).join(''):'<p class="empty">No bookings here yet.</p>';
+}
+function card(r){
+  var msg='Hello '+r.name+', this is Nostalgia Lagos. We are confirming your table for '+fmtDate(r.date)+' at '+fmtTime(r.time)+' for '+r.guests+' guest'+(r.guests==='1'?'':'s')+'.';
+  var wa='https://wa.me/'+waNum(r.phone)+'?text='+encodeURIComponent(msg);
+  return '<article class="c s-'+esc(r.status)+'" data-id="'+esc(r.id)+'"><div class="top"><div><h3>'+esc(r.name)+'</h3><p class="meta">'+esc(fmtDate(r.date))+' &middot; '+esc(fmtTime(r.time))+'</p></div><span class="g">'+esc(r.guests||'?')+' guest'+(r.guests==='1'?'':'s')+'</span></div>'
+  +(r.notes?'<p class="nt">'+esc(r.notes)+'</p>':'')
+  +'<div class="row"><a class="btn o sm" href="tel:'+esc(r.phone.replace(/[^0-9+]/g,''))+'">Call</a><a class="btn o sm" href="'+esc(wa)+'" target="_blank" rel="noopener">WhatsApp</a></div>'
+  +'<div class="ctl"><select data-f="status" aria-label="Status for '+esc(r.name)+'">'+STATUSES.map(function(s){return '<option'+(s===r.status?' selected':'')+'>'+s+'</option>'}).join('')+'</select>'
+  +'<input type="text" data-f="note" value="'+esc(r.note)+'" placeholder="Staff note" aria-label="Staff note for '+esc(r.name)+'"></div>'
+  +'<small class="rc">Received '+esc(r.created?new Date(r.created).toLocaleString():'')+'</small></article>';
+}
+function save(id,f,v){
+  var r=rows.filter(function(x){return x.id===id})[0];if(!r)return;
+  r[f==='status'?'status':'note']=v;render();
+  if(demo){toast('Demo only. Not saved.');return}
+  var body={action:'update',pw:pw,id:id};body[f==='status'?'status':'note']=v;
+  api(body).then(function(){toast('Saved')}).catch(function(){toast('Could not save. Check your connection.')});
+}
+function showApp(){$('login').hidden=true;$('app').hidden=false;$('dbanner').hidden=!demo;
+  clearInterval(timer);if(!demo){timer=setInterval(function(){if(!document.hidden)load(true).catch(function(){})},60000)}}
+function signIn(p){
+  pw=p;$('err').textContent='';
+  if(!API){$('err').textContent='The dashboard is not connected yet. Add the Apps Script address in the file.';return}
+  load(false).then(function(){store('nl_pw',pw);showApp()}).catch(function(e){$('err').textContent=e.message==='Wrong password'?'That password is not right.':'Could not connect. Check your internet and try again.'});
+}
+$('lf').addEventListener('submit',function(e){e.preventDefault();signIn($('pw').value)});
+$('demob').addEventListener('click',function(){demo=true;rows=[];load(false).then(showApp)});
+$('lo').addEventListener('click',function(){store('nl_pw',null);location.hash='';location.reload()});
+$('rfb').addEventListener('click',function(){load(false).then(function(){toast('Updated')}).catch(function(){toast('Could not refresh')})});
+$('q').addEventListener('input',function(){query=this.value;render()});
+function chips(id,set){$(id).addEventListener('click',function(e){var b=e.target.closest('.chip');if(!b)return;[].forEach.call(this.children,function(c){c.setAttribute('aria-pressed',c===b?'true':'false')});set(b.dataset.v);render()})}
+chips('rng',function(v){range=v});chips('sts',function(v){status=v});
+$('list').addEventListener('change',function(e){var c=e.target.closest('.c');if(c&&e.target.dataset.f==='status')save(c.dataset.id,'status',e.target.value)});
+$('list').addEventListener('focusout',function(e){var c=e.target.closest('.c');if(c&&e.target.dataset.f==='note'){var r=rows.filter(function(x){return x.id===c.dataset.id})[0];if(r&&r.note!==e.target.value)save(c.dataset.id,'note',e.target.value)}});
+if(!API||location.hash==='#demo'){$('demob').hidden=false}
+var saved=store('nl_pw');if(saved&&API){signIn(saved)}
+</script>
+</body>
+</html>
